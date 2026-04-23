@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Elliston Prints</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0c;--surface:#141414;--s2:#1c1c1c;--s3:#232323;--border:#272727;--gold:#c4973d;--gold-l:#dab96d;--gold-d:#7a5d25;--text:#ede8de;--muted:#888;--dim:#4a4a4a;--danger:#b34040;--success:#3d8c5c;--blue:#3d6ea8;--radius:6px;--radius-lg:12px;--nav:64px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;height:var(--nav);background:rgba(12,12,12,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:300;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:color .2s}
+.nav-logo:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:7px 18px;border-radius:var(--radius);cursor:pointer;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;transition:all .2s;position:relative}
+.nav-btn:hover{border-color:var(--gold);color:var(--gold)}
+.cart-cnt{position:absolute;top:-7px;right:-7px;background:var(--gold);color:var(--bg);width:18px;height:18px;border-radius:50%;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:500;display:none}
+/* HERO */
+.hero{min-height:58vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px 60px;background:radial-gradient(ellipse at 50% 60%,#1a150a 0%,var(--bg) 68%);border-bottom:1px solid var(--border)}
+.hero-eye{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.hero-h{font-family:'Cormorant Garamond',serif;font-size:clamp(46px,8vw,80px);font-weight:300;line-height:1.08;margin-bottom:22px}
+.hero-h em{font-style:italic;color:var(--gold-l)}
+.hero-sub{font-size:15px;color:var(--muted);max-width:460px;letter-spacing:.3px}
+/* SECTION */
+.section{padding:60px 40px;max-width:1200px;margin:0 auto}
+.sec-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;letter-spacing:.5px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+/* ALBUM GRID */
+.album-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.album-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:border-color .2s,transform .25s}
+.album-card:hover{border-color:var(--gold-d);transform:translateY(-3px)}
+.album-cover{aspect-ratio:16/10;position:relative;display:flex;align-items:flex-end;padding:18px}
+.album-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.album-badge{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.65);border:1px solid var(--gold-d);color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:3px}
+.album-meta{padding:18px 22px 22px}
+.album-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:300;margin-bottom:5px}
+.album-desc{font-size:13px;color:var(--muted);margin-bottom:10px}
+.album-cnt{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+/* PHOTO GRID */
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.photo-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .2s}
+.photo-card:hover{border-color:var(--gold-d)}
+.photo-thumb{aspect-ratio:4/3;position:relative;overflow:hidden}
+.photo-thumb img{width:100%;height:100%;object-fit:cover}
+.photo-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.photo-info{padding:13px 15px 15px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.photo-left{flex:1}
+.photo-name{font-size:14px;margin-bottom:2px}
+.photo-price{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold)}
+.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.badge{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+.bdl{background:rgba(61,140,92,.12);color:#5cb882;border:1px solid rgba(61,140,92,.25)}
+.bpr{background:rgba(196,151,61,.12);color:var(--gold);border:1px solid rgba(196,151,61,.25)}
+/* BUTTONS */
+.btn{padding:9px 22px;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;transition:all .2s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.btn-primary{background:var(--gold);border-color:var(--gold);color:var(--bg);font-weight:500}
+.btn-primary:hover{background:var(--gold-l);border-color:var(--gold-l)}
+.btn-ghost{background:none;color:var(--muted)}
+.btn-ghost:hover{border-color:var(--gold-d);color:var(--gold)}
+.btn-danger{background:none;border-color:var(--danger);color:var(--danger)}
+.btn-danger:hover{background:var(--danger);color:#fff}
+.btn-sm{padding:5px 13px;font-size:11px}
+.btn-full{width:100%;justify-content:center}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+/* BACK LINK */
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;margin-bottom:32px;transition:color .2s}
+.back:hover{color:var(--gold)}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:38px;width:100%;max-width:480px;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1}
+.modal-close:hover{color:var(--text)}
+.modal-h{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;margin-bottom:6px}
+.modal-sub{font-size:13px;color:var(--muted);margin-bottom:26px}
+/* FORMS */
+.fgroup{margin-bottom:18px}
+label{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+input[type=text],input[type=email],input[type=number],input[type=password],textarea,select{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'Jost',sans-serif;font-size:14px;font-weight:300;padding:9px 13px;transition:border-color .2s;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--gold-d)}
+select option{background:var(--s2)}
+textarea{resize:vertical;min-height:72px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+/* ADMIN */
+.admin-layout{display:flex;min-height:calc(100vh - var(--nav))}
+.admin-sidebar{width:210px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);padding:28px 0}
+.admin-logo{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);padding:0 22px 24px;border-bottom:1px solid var(--border);margin-bottom:12px}
+.anav{display:flex;align-items:center;gap:10px;padding:11px 22px;cursor:pointer;font-size:13px;color:var(--muted);border-left:2px solid transparent;transition:all .15s}
+.anav:hover{color:var(--text);background:var(--s2)}
+.anav.active{color:var(--gold);border-left-color:var(--gold);background:rgba(196,151,61,.05)}
+.admin-main{flex:1;padding:36px 40px;overflow-x:auto}
+.admin-hd{margin-bottom:28px}
+.admin-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;margin-bottom:3px}
+.admin-sub{font-size:13px;color:var(--muted)}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;padding:9px 14px;border-bottom:1px solid var(--border);color:var(--muted);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:400}
+.tbl td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:var(--s2)}
+.tbl-mini{width:52px;height:38px;border-radius:4px;overflow:hidden;flex-shrink:0}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:28px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px}
+.stat-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--gold)}
+/* CART */
+.cart-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.cart-thumb{width:60px;height:44px;border-radius:4px;overflow:hidden;flex-shrink:0}
+.cart-thumb img,.cart-thumb .mini-ph{width:100%;height:100%;object-fit:cover}
+.cart-name{font-size:13px;margin-bottom:2px}
+.cart-meta{font-size:11px;color:var(--muted)}
+.cart-price{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);margin-left:auto}
+.cart-remove{background:none;border:none;color:var(--dim);cursor:pointer;font-size:16px;padding:4px;margin-left:8px;transition:color .2s}
+.cart-remove:hover{color:var(--danger)}
+/* NOTIFY */
+#notifs{position:fixed;bottom:22px;right:22px;z-index:9999;display:flex;flex-direction:column;gap:9px;pointer-events:none}
+.notif{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--radius);padding:11px 16px;font-size:13px;max-width:300px;animation:notifIn .25s ease;pointer-events:auto}
+.notif.success{border-left-color:var(--success)}
+.notif.error{border-left-color:var(--danger)}
+@keyframes notifIn{from{transform:translateX(30px);opacity:0}to{transform:translateX(0);opacity:1}}
+/* LOGIN */
+.login-pg{min-height:calc(100vh - var(--nav));display:flex;align-items:center;justify-content:center;padding:40px;background:radial-gradient(ellipse at 50% 40%,#141008 0%,var(--bg) 70%)}
+.login-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:46px;width:100%;max-width:380px}
+.login-eye{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.login-h{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:30px}
+/* VISIBILITY BADGES */
+.vb{display:inline-flex;align-items:center;gap:4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+.vb-pub{background:rgba(61,140,92,.1);color:#5cb882}
+.vb-code{background:rgba(196,151,61,.1);color:var(--gold)}
+.vb-priv{background:rgba(100,100,100,.1);color:var(--dim)}
+/* TOGGLE */
+.toggle{position:relative;width:38px;height:21px;cursor:pointer;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0;position:absolute}
+.tslider{position:absolute;inset:0;background:var(--border);border-radius:21px;transition:.2s}
+.tslider::before{content:'';position:absolute;height:15px;width:15px;left:3px;top:3px;background:var(--dim);border-radius:50%;transition:.2s}
+.toggle input:checked + .tslider{background:var(--gold-d)}
+.toggle input:checked + .tslider::before{transform:translateX(17px);background:var(--gold)}
+/* INFO BOXES */
+.info-box{background:rgba(61,110,168,.08);border:1px solid rgba(61,110,168,.25);border-radius:var(--radius);padding:15px 18px;font-size:13px;line-height:1.7;margin-bottom:18px;color:var(--muted)}
+.info-box strong{color:var(--text);font-weight:500}
+.warn-box{background:rgba(196,151,61,.07);border:1px solid rgba(196,151,61,.22);border-radius:var(--radius);padding:15px 18px;font-size:13px;line-height:1.7;margin-bottom:18px;color:var(--muted)}
+/* DIVIDER */
+.div{height:1px;background:var(--border);margin:22px 0}
+/* EMPTY STATE */
+.empty{text-align:center;padding:56px 20px;color:var(--muted)}
+.empty-icon{font-size:36px;margin-bottom:14px}
+.empty-h{font-family:'Cormorant Garamond',serif;font-size:20px;margin-bottom:6px;color:var(--text)}
+.empty-p{font-size:13px;margin-bottom:22px}
+/* CHECKOUT */
+.checkout-grid{display:grid;grid-template-columns:1fr 360px;gap:36px;align-items:start}
+/* UPLOAD AREA */
+.upload-area{border:2px dashed var(--border);border-radius:var(--radius);padding:28px;text-align:center;cursor:pointer;transition:border-color .2s;color:var(--muted);font-size:13px}
+.upload-area:hover{border-color:var(--gold-d);color:var(--gold)}
+/* SECTION BANNER */
+.page-header{padding:40px 40px 0;max-width:1200px;margin:0 auto}
+/* WITHDRAW */
+.withdraw-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px}
+.money-big{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--gold);margin-bottom:4px}
+/* RESPONSIVE */
+@media(max-width:768px){nav{padding:0 18px}.nav-right{gap:10px}.hero{padding:56px 18px 44px}.section{padding:36px 18px}.album-grid{grid-template-columns:1fr}.admin-layout{flex-direction:column}.admin-sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border);padding:10px 0;display:flex;overflow-x:auto}.admin-logo{display:none}.anav{border-left:none;border-bottom:2px solid transparent;white-space:nowrap;flex-shrink:0}.anav.active{border-left-color:transparent;border-bottom-color:var(--gold)}.admin-main{padding:24px 18px}.checkout-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo" id="nav-logo" onclick="go('home')">STUDIO</span>
+  <div class="nav-right">
+    <button class="nav-btn" onclick="go('home')">Portfolio</button>
+    <button class="nav-btn" id="cart-btn" onclick="go('cart')">
+      Cart <span class="cart-cnt" id="cart-cnt">0</span>
+    </button>
+    <button class="nav-btn" id="admin-btn" onclick="handleAdminBtn()">Admin</button>
+  </div>
+</nav>
+
+<div id="notifs"></div>
+<div id="modal-wrap"></div>
+<div id="app"></div>
+
+<script>
+'use strict';
+const SK = 'photostudio_v3';
+
+// ─── DEFAULT STATE ────────────────────────────────────────
+function defState() {
+  return {
+    studio: {
+      name: 'Elliston Prints',
+      tagline: 'Capturing moments, beautifully and forever',
+      adminPass: 'admin123',
+      stripeKey: '',
+      payMode: 'demo',
+      bankName: '', bankAcct: '', bankRouting: ''
+    },
+    albums: [
+      { id: 'a1', name: 'Golden Hour Sessions', desc: 'Breathtaking sunset portraits across West Texas', vis: 'public', code: '', hue: 35, created: '2024-10-15' },
+      { id: 'a2', name: 'The Miller Wedding', desc: 'An intimate backyard ceremony in Stephenville', vis: 'code', code: 'MILLER24', hue: 330, created: '2024-11-02' },
+      { id: 'a3', name: 'Commercial Portfolio', desc: 'Brand and product photography for local businesses', vis: 'private', code: '', hue: 200, created: '2024-12-01' }
+    ],
+    photos: [
+      { id: 'p1', albumId: 'a1', title: 'Desert Bloom',     price: 25, dl: true,  src: '', hue: 35 },
+      { id: 'p2', albumId: 'a1', title: 'Lone Star Horizon',price: 35, dl: true,  src: '', hue: 22 },
+      { id: 'p3', albumId: 'a1', title: 'Red Sky Portrait', price: 45, dl: false, src: '', hue: 12 },
+      { id: 'p4', albumId: 'a1', title: 'Golden Fields',    price: 30, dl: true,  src: '', hue: 48 },
+      { id: 'p5', albumId: 'a2', title: 'First Kiss',       price: 60, dl: true,  src: '', hue: 350 },
+      { id: 'p6', albumId: 'a2', title: 'Ring Ceremony',    price: 55, dl: true,  src: '', hue: 340 },
+      { id: 'p7', albumId: 'a2', title: 'Dancing Together', price: 50, dl: false, src: '', hue: 330 },
+      { id: 'p8', albumId: 'a3', title: 'Brand Campaign',   price: 80, dl: false, src: '', hue: 200 },
+      { id: 'p9', albumId: 'a3', title: 'Product Feature',  price:100, dl: false, src: '', hue: 210 }
+    ],
+    orders: [],
+    revenue: 0,
+    withdrawn: 0,
+    withdrawals: []
+  };
+}
+
+// ─── STATE ────────────────────────────────────────────────
+let S = (() => { try { return JSON.parse(localStorage.getItem(SK)) || defState(); } catch { return defState(); } })();
+let isAdmin = false;
+let unlocked = new Set(); // album ids unlocked with code
+let cart = [];
+let view = 'home';
+let vp = {}; // view params
+
+function save() { localStorage.setItem(SK, JSON.stringify(S)); }
+
+// ─── ROUTER ──────────────────────────────────────────────
+function go(v, p = {}) { view = v; vp = p; render(); window.scrollTo(0,0); }
+function render() {
+  const map = { home: renderHome, album: () => renderAlbum(vp.id), cart: renderCart,
+    checkout: renderCheckout, login: renderLogin, admin: () => renderAdmin(vp.tab || 'albums') };
+  (map[view] || renderHome)();
+  updNav();
+}
+
+// ─── NAV ─────────────────────────────────────────────────
+function updNav() {
+  document.getElementById('nav-logo').textContent = S.studio.name.toUpperCase();
+  document.title = S.studio.name;
+  document.getElementById('page-title').textContent = S.studio.name;
+  const cc = cart.reduce((a,i) => a + i.qty, 0);
+  const el = document.getElementById('cart-cnt');
+  el.textContent = cc;
+  el.style.display = cc ? 'flex' : 'none';
+  document.getElementById('admin-btn').textContent = isAdmin ? 'Dashboard' : 'Admin';
+}
+function handleAdminBtn() { isAdmin ? go('admin', { tab: 'albums' }) : go('login'); }
+
+// ─── PLACEHOLDERS ─────────────────────────────────────────
+function ph(hue, label = '') {
+  return `<div class="photo-ph" style="background:linear-gradient(135deg,hsl(${hue},45%,18%) 0%,hsl(${(hue+40)%360},35%,9%) 100%)">${label ? `<span>${label}</span>` : ''}</div>`;
+}
+function albumPh(hue) {
+  return `<div class="photo-ph" style="width:100%;height:100%;background:linear-gradient(145deg,hsl(${hue},40%,14%) 0%,hsl(${(hue+50)%360},30%,8%) 100%)"></div>`;
+}
+function imgOrPh(p, cls = '') {
+  return p.src ? `<img src="${p.src}" alt="${p.title}" class="${cls}" onerror="this.outerHTML='${ph(p.hue)}'">` : ph(p.hue);
+}
+function miniImgOrPh(p) {
+  return p.src ? `<img src="${p.src}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'">` : `<div style="width:100%;height:100%;background:hsl(${p.hue},40%,14%)"></div>`;
+}
+
+// ─── HELPERS ──────────────────────────────────────────────
+function $c(h) { const d = document.createElement('div'); d.innerHTML = h; return d.firstElementChild; }
+function app() { return document.getElementById('app'); }
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+function cur(n) { return '$' + Number(n).toFixed(2); }
+function dts(d) { return new Date(d).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }); }
+function albuumPhotos(aid) { return S.photos.filter(p => p.albumId === aid); }
+function canView(album) { return album.vis === 'public' || isAdmin || unlocked.has(album.id); }
+
+// ─── NOTIFICATIONS ────────────────────────────────────────
+function notify(msg, type = 'info') {
+  const el = document.createElement('div');
+  el.className = `notif ${type}`;
+  el.textContent = msg;
+  document.getElementById('notifs').appendChild(el);
+  setTimeout(() => el.remove(), 3800);
+}
+
+// ─── MODAL ────────────────────────────────────────────────
+function showModal(html) { document.getElementById('modal-wrap').innerHTML = html; }
+function closeModal() { document.getElementById('modal-wrap').innerHTML = ''; }
+
+// ─── CART ─────────────────────────────────────────────────
+function addToCart(pid) {
+  const photo = S.photos.find(p => p.id === pid);
+  if (!photo) return;
+  if (cart.find(i => i.id === pid)) { notify('Already in cart'); return; }
+  cart.push({ id: pid, qty: 1 });
+  notify(`"${photo.title}" added to cart`, 'success');
+  updNav();
+}
+function removeFromCart(pid) { cart = cart.filter(i => i.id !== pid); updNav(); renderCart(); }
+function cartTotal() { return cart.reduce((a, i) => { const p = S.photos.find(x => x.id === i.id); return a + (p ? p.price * i.qty : 0); }, 0); }
+function inCart(pid) { return cart.some(i => i.id === pid); }
+
+// ─── RENDER HOME ─────────────────────────────────────────
+function renderHome() {
+  const pubAlbums = S.albums.filter(a => a.vis === 'public');
+  const rows = pubAlbums.map(a => {
+    const photos = albuumPhotos(a.id);
+    const cover = photos[0];
+    return `<div class="album-card" onclick="go('album',{id:'${a.id}'})">
+      <div class="album-cover">${cover ? (cover.src ? `<img src="${cover.src}" alt="${a.name}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">` : albumPh(a.hue)) : albumPh(a.hue)}</div>
+      <div class="album-meta">
+        <div class="album-name">${esc(a.name)}</div>
+        <div class="album-desc">${esc(a.desc)}</div>
+        <div class="album-cnt">${photos.length} photo${photos.length !== 1 ? 's' : ''}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  app().innerHTML = `
+    <div class="hero">
+      <div class="hero-eye">Photography Studio</div>
+      <h1 class="hero-h">${esc(S.studio.name).replace(/(\w+)$/, '<em>$1</em>')}</h1>
+      <p class="hero-sub">${esc(S.studio.tagline)}</p>
+    </div>
+    <div class="section">
+      <div class="sec-hd">
+        <h2 class="sec-title">Portfolio Albums</h2>
+        <span class="sec-label">Open Gallery</span>
+      </div>
+      ${pubAlbums.length ? `<div class="album-grid">${rows}</div>` : '<div class="empty"><div class="empty-icon">📷</div><div class="empty-h">No albums yet</div><div class="empty-p">The photographer hasn\'t published any albums yet.</div></div>'}
+      <div style="margin-top:36px;padding:20px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <div>
+          <div style="font-size:13px;margin-bottom:3px">Have a private album code?</div>
+          <div style="font-size:12px;color:var(--muted)">Enter your access code to view your personal album.</div>
+        </div>
+        <button class="btn btn-ghost" onclick="showCodeEntry()">Enter Code →</button>
+      </div>
+    </div>`;
+}
+
+// ─── SHOW CODE ENTRY ──────────────────────────────────────
+function showCodeEntry(albumId = null) {
+  const hint = albumId ? `<p class="modal-sub">This album is protected. Enter the access code you received.</p>` : `<p class="modal-sub">Enter the access code shared with you to view a private album.</p>`;
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-h">Private Album</div>
+      ${hint}
+      <div class="fgroup">
+        <label>Access Code</label>
+        <input type="text" id="code-input" placeholder="e.g. MILLER24" style="letter-spacing:2px;text-transform:uppercase">
+      </div>
+      <button class="btn btn-primary btn-full" onclick="submitCode('${albumId || ''}')">Unlock Album</button>
+    </div>
+  </div>`);
+  setTimeout(() => { const el = document.getElementById('code-input'); if(el) { el.focus(); el.addEventListener('keyup', e => e.key === 'Enter' && submitCode(albumId || '')); el.addEventListener('input', e => e.target.value = e.target.value.toUpperCase()); } }, 50);
+}
+
+function submitCode(albumId) {
+  const code = (document.getElementById('code-input')?.value || '').trim().toUpperCase();
+  if (!code) { notify('Please enter a code', 'error'); return; }
+  const albums = albumId ? S.albums.filter(a => a.id === albumId) : S.albums;
+  const match = albums.find(a => a.vis === 'code' && a.code.toUpperCase() === code);
+  if (match) {
+    unlocked.add(match.id);
+    closeModal();
+    notify(`"${match.name}" unlocked!`, 'success');
+    go('album', { id: match.id });
+  } else {
+    notify('Invalid code. Please try again.', 'error');
+  }
+}
+
+// ─── RENDER ALBUM ─────────────────────────────────────────
+function renderAlbum(aid) {
+  const album = S.albums.find(a => a.id === aid);
+  if (!album) { go('home'); return; }
+
+  if (!canView(album)) {
+    if (album.vis === 'code') {
+      app().innerHTML = `
+        <div class="section" style="max-width:500px">
+          <div class="back" onclick="go('home')">← Back</div>
+          <div style="text-align:center;padding:40px 20px">
+            <div style="font-size:40px;margin-bottom:18px">🔒</div>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;margin-bottom:8px">${esc(album.name)}</h2>
+            <p style="color:var(--muted);font-size:14px;margin-bottom:28px">This album is password protected</p>
+            <button class="btn btn-primary" onclick="showCodeEntry('${aid}')">Enter Access Code</button>
+          </div>
+        </div>`;
+      return;
+    }
+    go('home'); return;
+  }
+
+  const photos = albuumPhotos(aid);
+  const cards = photos.map(p => {
+    const btnHtml = inCart(p.id)
+      ? `<button class="btn btn-ghost btn-sm" disabled>In Cart</button>`
+      : `<button class="btn btn-primary btn-sm" onclick="event.stopPropagation();addToCart('${p.id}')">Add to Cart</button>`;
+    return `<div class="photo-card">
+      <div class="photo-thumb">${imgOrPh(p)}</div>
+      <div class="photo-info">
+        <div class="photo-left">
+          <div class="photo-name">${esc(p.title)}</div>
+          <div class="photo-price">${cur(p.price)}</div>
+          <div class="badges">
+            ${p.dl ? '<span class="badge bdl">Download</span>' : ''}
+            <span class="badge bpr">Print</span>
+          </div>
+        </div>
+        ${btnHtml}
+      </div>
+    </div>`;
+  }).join('');
+
+  app().innerHTML = `
+    <div class="section">
+      <div class="back" onclick="go('home')">← All Albums</div>
+      <div class="sec-hd">
+        <div>
+          <h1 class="sec-title">${esc(album.name)}</h1>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">${esc(album.desc)}</p>
+        </div>
+        <span class="sec-label">${photos.length} Photos</span>
+      </div>
+      ${photos.length ? `<div class="photo-grid">${cards}</div>` : '<div class="empty"><div class="empty-icon">📸</div><div class="empty-h">No photos yet</div><div class="empty-p">This album has no photos.</div></div>'}
+    </div>`;
+}
+
+// ─── RENDER CART ─────────────────────────────────────────
+function renderCart() {
+  const items = cart.map(ci => {
+    const p = S.photos.find(x => x.id === ci.id);
+    if (!p) return '';
+    return `<div class="cart-item">
+      <div class="cart-thumb">${miniImgOrPh(p)}</div>
+      <div style="flex:1">
+        <div class="cart-name">${esc(p.title)}</div>
+        <div class="cart-meta">${p.dl ? 'Digital Download + Print' : 'Print Only'}</div>
+      </div>
+      <div class="cart-price">${cur(p.price)}</div>
+      <button class="cart-remove" onclick="removeFromCart('${p.id}')" title="Remove">×</button>
+    </div>`;
+  }).join('');
+
+  const total = cartTotal();
+  app().innerHTML = `
+    <div class="section" style="max-width:700px">
+      <div class="back" onclick="go('home')">← Continue Shopping</div>
+      <div class="sec-hd">
+        <h1 class="sec-title">Your Cart</h1>
+        <span class="sec-label">${cart.length} item${cart.length !== 1 ? 's' : ''}</span>
+      </div>
+      ${cart.length ? `
+        <div>${items}</div>
+        <div style="display:flex;justify-content:flex-end;gap:14px;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:22px">Total: <span style="color:var(--gold)">${cur(total)}</span></span>
+          <button class="btn btn-primary" onclick="go('checkout')">Checkout →</button>
+        </div>
+      ` : `<div class="empty"><div class="empty-icon">🛒</div><div class="empty-h">Your cart is empty</div><div class="empty-p">Browse the portfolio to add photos.</div><button class="btn btn-ghost" onclick="go('home')">View Portfolio</button></div>`}
+    </div>`;
+}
+
+// ─── RENDER CHECKOUT ──────────────────────────────────────
+function renderCheckout() {
+  if (!cart.length) { go('cart'); return; }
+  const total = cartTotal();
+  const orderItems = cart.map(ci => {
+    const p = S.photos.find(x => x.id === ci.id);
+    return p ? `<div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border)"><span>${esc(p.title)}</span><span style="color:var(--gold)">${cur(p.price)}</span></div>` : '';
+  }).join('');
+
+  const isStripe = S.studio.payMode === 'live' && S.studio.stripeKey;
+
+  app().innerHTML = `
+    <div class="section">
+      <div class="back" onclick="go('cart')">← Back to Cart</div>
+      <div class="sec-hd"><h1 class="sec-title">Checkout</h1></div>
+      <div class="checkout-grid">
+        <div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:18px">Contact Information</h3>
+          <div class="frow">
+            <div class="fgroup"><label>First Name</label><input type="text" id="co-fname" placeholder="Jane"></div>
+            <div class="fgroup"><label>Last Name</label><input type="text" id="co-lname" placeholder="Smith"></div>
+          </div>
+          <div class="fgroup"><label>Email Address</label><input type="email" id="co-email" placeholder="jane@example.com"></div>
+          <div class="div"></div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:18px">Payment</h3>
+          ${isStripe ? `<div id="stripe-element" style="background:var(--s2);border:1px solid var(--border);border-radius:var(--radius);padding:12px"></div><p style="font-size:12px;color:var(--muted);margin-top:8px">Secured by Stripe</p>` :
+          `<div class="warn-box">
+            <strong>Demo Mode</strong> — Payments are simulated. To accept real payments, add your Stripe publishable key in Admin → Settings.
+          </div>
+          <div style="background:var(--s2);border:2px dashed var(--border);border-radius:var(--radius);padding:20px;text-align:center;color:var(--muted);font-size:13px">
+            💳 Card payment form appears here with Stripe configured
+          </div>`}
+          <button class="btn btn-primary btn-full" style="margin-top:22px;padding:13px" onclick="placeOrder()">
+            ${isStripe ? 'Pay ' + cur(total) : 'Complete Demo Order'} →
+          </button>
+        </div>
+        <div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;position:sticky;top:calc(var(--nav) + 20px)">
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;margin-bottom:16px">Order Summary</h3>
+            ${orderItems}
+            <div style="display:flex;justify-content:space-between;margin-top:14px;padding-top:14px;font-size:15px">
+              <span>Total</span>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold)">${cur(total)}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function placeOrder() {
+  const fname = document.getElementById('co-fname')?.value.trim();
+  const lname = document.getElementById('co-lname')?.value.trim();
+  const email = document.getElementById('co-email')?.value.trim();
+  if (!fname || !email) { notify('Please fill in your name and email', 'error'); return; }
+
+  const items = cart.map(ci => {
+    const p = S.photos.find(x => x.id === ci.id);
+    return p ? { photoId: p.id, title: p.title, price: p.price, dl: p.dl } : null;
+  }).filter(Boolean);
+
+  const total = cartTotal();
+  const order = {
+    id: uid(),
+    date: new Date().toISOString(),
+    name: `${fname} ${lname}`,
+    email,
+    items,
+    total,
+    status: 'completed',
+    demo: S.studio.payMode !== 'live'
+  };
+
+  S.orders.push(order);
+  S.revenue += total;
+  save();
+  cart = [];
+  updNav();
+
+  app().innerHTML = `
+    <div class="section" style="max-width:560px;text-align:center;padding-top:80px">
+      <div style="font-size:48px;margin-bottom:20px">✓</div>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;margin-bottom:12px">Thank You!</h1>
+      <p style="color:var(--muted);margin-bottom:6px">Order #${order.id.slice(-6).toUpperCase()} confirmed</p>
+      <p style="font-size:13px;color:var(--dim);margin-bottom:32px">A confirmation has been sent to ${esc(email)}</p>
+      ${order.items.some(i => i.dl) ? `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:24px;text-align:left">
+        <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Downloadable Files</p>
+        ${order.items.filter(i => i.dl).map(i => `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px">${esc(i.title)}</span><button class="btn btn-ghost btn-sm" onclick="simulateDownload('${esc(i.title)}')">Download</button></div>`).join('')}
+      </div>` : ''}
+      <button class="btn btn-primary" onclick="go('home')">Back to Portfolio</button>
+    </div>`;
+}
+
+function simulateDownload(title) {
+  notify(`Downloading "${title}"...`, 'success');
+}
+
+// ─── ADMIN LOGIN ──────────────────────────────────────────
+function renderLogin() {
+  if (isAdmin) { go('admin', { tab: 'albums' }); return; }
+  app().innerHTML = `
+    <div class="login-pg">
+      <div class="login-card">
+        <div class="login-eye">Studio Admin</div>
+        <h1 class="login-h">Administrator Login</h1>
+        <div class="fgroup">
+          <label>Password</label>
+          <input type="password" id="admin-pw" placeholder="Enter admin password" onkeyup="if(event.key==='Enter')doLogin()">
+        </div>
+        <button class="btn btn-primary btn-full" style="margin-top:8px" onclick="doLogin()">Sign In →</button>
+        <p style="font-size:11px;color:var(--dim);margin-top:18px;text-align:center">Default password: admin123 — change in Settings</p>
+      </div>
+    </div>`;
+  setTimeout(() => document.getElementById('admin-pw')?.focus(), 50);
+}
+
+function doLogin() {
+  const pw = document.getElementById('admin-pw')?.value;
+  if (pw === S.studio.adminPass) { isAdmin = true; updNav(); notify('Welcome back!', 'success'); go('admin', { tab: 'albums' }); }
+  else { notify('Incorrect password', 'error'); }
+}
+
+function doLogout() { isAdmin = false; updNav(); notify('Signed out'); go('home'); }
+
+// ─── ADMIN DASHBOARD ──────────────────────────────────────
+function renderAdmin(tab) {
+  if (!isAdmin) { go('login'); return; }
+  const tabs = [
+    { id: 'albums', label: '📁 Albums' }, { id: 'photos', label: '📸 Photos' },
+    { id: 'orders', label: '🛒 Orders' }, { id: 'revenue', label: '💰 Revenue' },
+    { id: 'settings', label: '⚙️ Settings' }
+  ];
+  const navHtml = tabs.map(t => `<div class="anav ${tab === t.id ? 'active' : ''}" onclick="go('admin',{tab:'${t.id}'})">${t.label}</div>`).join('');
+  const contentFns = { albums: adminAlbums, photos: adminPhotos, orders: adminOrders, revenue: adminRevenue, settings: adminSettings };
+  const content = (contentFns[tab] || adminAlbums)();
+
+  app().innerHTML = `
+    <div class="admin-layout">
+      <div class="admin-sidebar">
+        <div class="admin-logo">Admin Panel</div>
+        ${navHtml}
+        <div style="position:absolute;bottom:20px;left:0;right:0;padding:0 12px">
+          <button class="btn btn-danger btn-sm btn-full" onclick="doLogout()">Sign Out</button>
+        </div>
+      </div>
+      <div class="admin-main">${content}</div>
+    </div>`;
+}
+
+// ─── ADMIN: ALBUMS ────────────────────────────────────────
+function adminAlbums() {
+  const rows = S.albums.map(a => {
+    const cnt = albuumPhotos(a.id).length;
+    const vhtml = { public: '<span class="vb vb-pub">Public</span>', code: '<span class="vb vb-code">Code Protected</span>', private: '<span class="vb vb-priv">Private</span>' }[a.vis] || '';
+    return `<tr>
+      <td><strong style="font-size:14px">${esc(a.name)}</strong><br><span style="font-size:12px;color:var(--muted)">${esc(a.desc)}</span></td>
+      <td>${vhtml}${a.vis==='code' ? `<br><code style="font-size:11px;color:var(--gold-l);letter-spacing:1px">${esc(a.code)}</code>` : ''}</td>
+      <td>${cnt}</td>
+      <td>${dts(a.created)}</td>
+      <td style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="editAlbum('${a.id}')">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="delAlbum('${a.id}')">Delete</button>
+      </td>
+    </tr>`;
+  }).join('');
+
+  return `<div class="admin-hd">
+    <h2 class="admin-title">Albums</h2>
+    <p class="admin-sub">Manage your photo collections and their visibility</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-lbl">Total Albums</div><div class="stat-val">${S.albums.length}</div></div>
+    <div class="stat"><div class="stat-lbl">Public</div><div class="stat-val">${S.albums.filter(a=>a.vis==='public').length}</div></div>
+    <div class="stat"><div class="stat-lbl">Code Protected</div><div class="stat-val">${S.albums.filter(a=>a.vis==='code').length}</div></div>
+    <div class="stat"><div class="stat-lbl">Private</div><div class="stat-val">${S.albums.filter(a=>a.vis==='private').length}</div></div>
+  </div>
+  <div style="margin-bottom:18px"><button class="btn btn-primary" onclick="newAlbum()">+ New Album</button></div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+    <table class="tbl">
+      <thead><tr><th>Album</th><th>Visibility</th><th>Photos</th><th>Created</th><th>Actions</th></tr></thead>
+      <tbody>${rows || '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:32px">No albums yet</td></tr>'}</tbody>
+    </table>
+  </div>`;
+}
+
+function newAlbum() {
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-h">New Album</div>
+      <div class="modal-sub">Create a new photo collection</div>
+      <div class="fgroup"><label>Album Name</label><input type="text" id="al-name" placeholder="e.g. Spring Portraits 2025"></div>
+      <div class="fgroup"><label>Description</label><textarea id="al-desc" placeholder="Brief description of this album"></textarea></div>
+      <div class="fgroup"><label>Visibility</label>
+        <select id="al-vis" onchange="document.getElementById('al-code-wrap').style.display=this.value==='code'?'block':'none'">
+          <option value="public">Public — visible to everyone</option>
+          <option value="code">Code Protected — requires access code</option>
+          <option value="private">Private — admin only</option>
+        </select>
+      </div>
+      <div class="fgroup" id="al-code-wrap" style="display:none"><label>Access Code</label><input type="text" id="al-code" placeholder="e.g. SMITH2025" style="letter-spacing:2px;text-transform:uppercase" oninput="this.value=this.value.toUpperCase()"></div>
+      <div style="display:flex;gap:10px;margin-top:6px">
+        <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveNewAlbum()">Create Album</button>
+      </div>
+    </div>
+  </div>`);
+}
+
+function saveNewAlbum() {
+  const name = document.getElementById('al-name')?.value.trim();
+  const desc = document.getElementById('al-desc')?.value.trim();
+  const vis = document.getElementById('al-vis')?.value;
+  const code = document.getElementById('al-code')?.value.trim().toUpperCase();
+  if (!name) { notify('Album name is required', 'error'); return; }
+  if (vis === 'code' && !code) { notify('Please enter an access code', 'error'); return; }
+  S.albums.push({ id: uid(), name, desc: desc || '', vis, code: vis === 'code' ? code : '', hue: Math.floor(Math.random()*360), created: new Date().toISOString().slice(0,10) });
+  save(); closeModal(); notify('Album created!', 'success'); go('admin', { tab: 'albums' });
+}
+
+function editAlbum(id) {
+  const a = S.albums.find(x => x.id === id);
+  if (!a) return;
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-h">Edit Album</div>
+      <div class="modal-sub">${esc(a.name)}</div>
+      <div class="fgroup"><label>Album Name</label><input type="text" id="ea-name" value="${esc(a.name)}"></div>
+      <div class="fgroup"><label>Description</label><textarea id="ea-desc">${esc(a.desc)}</textarea></div>
+      <div class="fgroup"><label>Visibility</label>
+        <select id="ea-vis" onchange="document.getElementById('ea-code-wrap').style.display=this.value==='code'?'block':'none'">
+          <option value="public" ${a.vis==='public'?'selected':''}>Public</option>
+          <option value="code" ${a.vis==='code'?'selected':''}>Code Protected</option>
+          <option value="private" ${a.vis==='private'?'selected':''}>Private</option>
+        </select>
+      </div>
+      <div class="fgroup" id="ea-code-wrap" style="display:${a.vis==='code'?'block':'none'}"><label>Access Code</label><input type="text" id="ea-code" value="${esc(a.code)}" style="letter-spacing:2px;text-transform:uppercase" oninput="this.value=this.value.toUpperCase()"></div>
+      <div style="display:flex;gap:10px;margin-top:6px">
+        <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveEditAlbum('${id}')">Save Changes</button>
+      </div>
+    </div>
+  </div>`);
+}
+
+function saveEditAlbum(id) {
+  const a = S.albums.find(x => x.id === id);
+  if (!a) return;
+  const name = document.getElementById('ea-name')?.value.trim();
+  const desc = document.getElementById('ea-desc')?.value.trim();
+  const vis = document.getElementById('ea-vis')?.value;
+  const code = document.getElementById('ea-code')?.value.trim().toUpperCase();
+  if (!name) { notify('Name is required', 'error'); return; }
+  if (vis === 'code' && !code) { notify('Enter an access code', 'error'); return; }
+  Object.assign(a, { name, desc, vis, code: vis === 'code' ? code : '' });
+  save(); closeModal(); notify('Album updated!', 'success'); go('admin', { tab: 'albums' });
+}
+
+function delAlbum(id) {
+  if (!confirm('Delete this album and all its photos?')) return;
+  S.albums = S.albums.filter(a => a.id !== id);
+  S.photos = S.photos.filter(p => p.albumId !== id);
+  save(); notify('Album deleted'); go('admin', { tab: 'albums' });
+}
+
+// ─── ADMIN: PHOTOS ────────────────────────────────────────
+function adminPhotos() {
+  const rows = S.photos.map(p => {
+    const album = S.albums.find(a => a.id === p.albumId);
+    return `<tr>
+      <td>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="tbl-mini">${miniImgOrPh(p)}</div>
+          <strong style="font-size:13px">${esc(p.title)}</strong>
+        </div>
+      </td>
+      <td style="font-size:12px;color:var(--muted)">${album ? esc(album.name) : '—'}</td>
+      <td><span style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold)">${cur(p.price)}</span></td>
+      <td>
+        <label class="toggle"><input type="checkbox" ${p.dl ? 'checked' : ''} onchange="toggleDl('${p.id}',this.checked)"><span class="tslider"></span></label>
+      </td>
+      <td style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="editPhoto('${p.id}')">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="delPhoto('${p.id}')">Delete</button>
+      </td>
+    </tr>`;
+  }).join('');
+
+  return `<div class="admin-hd">
+    <h2 class="admin-title">Photos</h2>
+    <p class="admin-sub">Manage individual photos, pricing, and download permissions</p>
+  </div>
+  <div style="margin-bottom:18px"><button class="btn btn-primary" onclick="newPhoto()">+ Add Photo</button></div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+    <table class="tbl">
+      <thead><tr><th>Photo</th><th>Album</th><th>Price</th><th>Downloadable</th><th>Actions</th></tr></thead>
+      <tbody>${rows || '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:32px">No photos yet</td></tr>'}</tbody>
+    </table>
+  </div>`;
+}
+
+function toggleDl(id, val) {
+  const p = S.photos.find(x => x.id === id);
+  if (p) { p.dl = val; save(); notify(val ? 'Download enabled' : 'Download disabled', 'success'); }
+}
+
+function newPhoto() {
+  const albumOpts = S.albums.map(a => `<option value="${a.id}">${esc(a.name)}</option>`).join('');
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-h">Add Photo</div>
+      <div class="modal-sub">Add a photo to an album</div>
+      <div class="fgroup"><label>Title</label><input type="text" id="np-title" placeholder="Photo title"></div>
+      <div class="fgroup"><label>Album</label><select id="np-album">${albumOpts}</select></div>
+      <div class="frow">
+        <div class="fgroup"><label>Price ($)</label><input type="number" id="np-price" value="25" min="0" step="0.01"></div>
+        <div class="fgroup" style="display:flex;flex-direction:column;justify-content:flex-end">
+          <label>Downloadable</label>
+          <label class="toggle" style="margin-top:10px"><input type="checkbox" id="np-dl" checked><span class="tslider"></span></label>
+        </div>
+      </div>
+      <div class="fgroup">
+        <label>Image URL (or upload below)</label>
+        <input type="text" id="np-url" placeholder="https://... (paste image URL)">
+      </div>
+      <div class="fgroup">
+        <label>Or Upload File</label>
+        <div class="upload-area" onclick="document.getElementById('np-file').click()">
+          Click to upload image (up to 25MB)
+        </div>
+        <input type="file" id="np-file" accept="image/*" style="display:none" onchange="handlePhotoUpload(this,'np-url')">
+      </div>
+      <div style="display:flex;gap:10px;margin-top:6px">
+        <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveNewPhoto()">Add Photo</button>
+      </div>
+    </div>
+  </div>`);
+}
+
+function handlePhotoUpload(input, targetId) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 25 * 1024 * 1024) { notify('File too large — maximum size is 25MB', 'error'); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    const el = document.getElementById(targetId);
+    if (el) el.value = e.target.result;
+    notify('Image loaded!', 'success');
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveNewPhoto() {
+  const title = document.getElementById('np-title')?.value.trim();
+  const albumId = document.getElementById('np-album')?.value;
+  const price = parseFloat(document.getElementById('np-price')?.value) || 0;
+  const dl = document.getElementById('np-dl')?.checked;
+  const src = document.getElementById('np-url')?.value.trim();
+  if (!title) { notify('Title is required', 'error'); return; }
+  if (!albumId) { notify('Select an album', 'error'); return; }
+  S.photos.push({ id: uid(), albumId, title, price, dl, src: src || '', hue: Math.floor(Math.random()*360) });
+  save(); closeModal(); notify('Photo added!', 'success'); go('admin', { tab: 'photos' });
+}
+
+function editPhoto(id) {
+  const p = S.photos.find(x => x.id === id);
+  if (!p) return;
+  const albumOpts = S.albums.map(a => `<option value="${a.id}" ${a.id===p.albumId?'selected':''}>${esc(a.name)}</option>`).join('');
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-h">Edit Photo</div>
+      <div class="modal-sub">${esc(p.title)}</div>
+      <div class="fgroup"><label>Title</label><input type="text" id="ep-title" value="${esc(p.title)}"></div>
+      <div class="fgroup"><label>Album</label><select id="ep-album">${albumOpts}</select></div>
+      <div class="frow">
+        <div class="fgroup"><label>Price ($)</label><input type="number" id="ep-price" value="${p.price}" min="0" step="0.01"></div>
+        <div class="fgroup" style="display:flex;flex-direction:column;justify-content:flex-end">
+          <label>Downloadable</label>
+          <label class="toggle" style="margin-top:10px"><input type="checkbox" id="ep-dl" ${p.dl?'checked':''}><span class="tslider"></span></label>
+        </div>
+      </div>
+      <div class="fgroup"><label>Image URL</label><input type="text" id="ep-url" value="${p.src ? esc(p.src.startsWith('data:') ? '(uploaded image)' : p.src) : ''}" placeholder="https://..."></div>
+      <div class="fgroup">
+        <label>Replace Image</label>
+        <div class="upload-area" onclick="document.getElementById('ep-file').click()">Click to replace image</div>
+        <input type="file" id="ep-file" accept="image/*" style="display:none" onchange="handlePhotoUpload(this,'ep-url')">
+      </div>
+      <div style="display:flex;gap:10px;margin-top:6px">
+        <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveEditPhoto('${id}')">Save Changes</button>
+      </div>
+    </div>
+  </div>`);
+}
+
+function saveEditPhoto(id) {
+  const p = S.photos.find(x => x.id === id);
+  if (!p) return;
+  const title = document.getElementById('ep-title')?.value.trim();
+  const albumId = document.getElementById('ep-album')?.value;
+  const price = parseFloat(document.getElementById('ep-price')?.value) || 0;
+  const dl = document.getElementById('ep-dl')?.checked;
+  const newUrl = document.getElementById('ep-url')?.value.trim();
+  if (!title) { notify('Title is required', 'error'); return; }
+  const src = newUrl === '(uploaded image)' ? p.src : newUrl;
+  Object.assign(p, { title, albumId, price, dl, src: src || '' });
+  save(); closeModal(); notify('Photo updated!', 'success'); go('admin', { tab: 'photos' });
+}
+
+function delPhoto(id) {
+  if (!confirm('Delete this photo?')) return;
+  S.photos = S.photos.filter(p => p.id !== id);
+  save(); notify('Photo deleted'); go('admin', { tab: 'photos' });
+}
+
+// ─── ADMIN: ORDERS ────────────────────────────────────────
+function adminOrders() {
+  const rows = [...S.orders].reverse().map(o => {
+    return `<tr>
+      <td style="font-size:12px;font-weight:500">#${o.id.slice(-6).toUpperCase()}</td>
+      <td>${dts(o.date)}</td>
+      <td>${esc(o.name)}<br><span style="font-size:12px;color:var(--muted)">${esc(o.email)}</span></td>
+      <td>${o.items.length} photo${o.items.length!==1?'s':''}</td>
+      <td style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold)">${cur(o.total)}</td>
+      <td><span style="font-size:11px;padding:3px 8px;border-radius:3px;background:${o.demo?'rgba(100,100,100,.1)':'rgba(61,140,92,.1)'};color:${o.demo?'var(--dim)':'var(--success)'};">${o.demo?'Demo':'Live'}</span></td>
+    </tr>`;
+  }).join('');
+
+  return `<div class="admin-hd">
+    <h2 class="admin-title">Orders</h2>
+    <p class="admin-sub">Complete order history</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-lbl">Total Orders</div><div class="stat-val">${S.orders.length}</div></div>
+    <div class="stat"><div class="stat-lbl">Total Revenue</div><div class="stat-val">${cur(S.revenue)}</div></div>
+    <div class="stat"><div class="stat-lbl">Available</div><div class="stat-val">${cur(Math.max(0, S.revenue - S.withdrawn))}</div></div>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+    <table class="tbl">
+      <thead><tr><th>Order</th><th>Date</th><th>Customer</th><th>Items</th><th>Total</th><th>Type</th></tr></thead>
+      <tbody>${rows || '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:40px">No orders yet</td></tr>'}</tbody>
+    </table>
+  </div>`;
+}
+
+// ─── ADMIN: REVENUE ───────────────────────────────────────
+function adminRevenue() {
+  const available = Math.max(0, S.revenue - S.withdrawn);
+  const wrows = [...S.withdrawals].reverse().map(w => `<tr>
+    <td>${dts(w.date)}</td>
+    <td>${esc(w.bank)}</td>
+    <td style="font-size:12px;color:var(--muted)">•••• ${esc(w.last4)}</td>
+    <td style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold)">${cur(w.amount)}</td>
+    <td><span style="font-size:11px;padding:3px 8px;border-radius:3px;background:rgba(61,140,92,.1);color:var(--success)">Processed</span></td>
+  </tr>`).join('');
+
+  return `<div class="admin-hd">
+    <h2 class="admin-title">Revenue & Withdrawals</h2>
+    <p class="admin-sub">Track your earnings and transfer funds to your bank</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-lbl">Total Earned</div><div class="stat-val">${cur(S.revenue)}</div></div>
+    <div class="stat"><div class="stat-lbl">Total Withdrawn</div><div class="stat-val">${cur(S.withdrawn)}</div></div>
+    <div class="stat"><div class="stat-lbl">Available Balance</div><div class="stat-val">${cur(available)}</div></div>
+  </div>
+  
+  <div class="withdraw-card" style="margin-bottom:28px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:6px">Available to Withdraw</div>
+        <div class="money-big">${cur(available)}</div>
+        ${S.studio.bankName ? `<div style="font-size:13px;color:var(--muted)">Bank: ${esc(S.studio.bankName)}</div>` : ''}
+      </div>
+      <button class="btn btn-primary" style="padding:12px 28px" onclick="showWithdraw(${available})" ${available <= 0 ? 'disabled' : ''}>Withdraw Funds →</button>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>How withdrawals work</strong><br>
+    In demo mode, withdrawals are recorded here but no real transfer occurs. To enable real payouts, connect your Stripe account in Settings — Stripe will direct-deposit funds to your linked bank account (typically 2–7 business days).
+  </div>
+
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:16px">Withdrawal History</h3>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+    <table class="tbl">
+      <thead><tr><th>Date</th><th>Bank</th><th>Account</th><th>Amount</th><th>Status</th></tr></thead>
+      <tbody>${wrows || '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:32px">No withdrawals yet</td></tr>'}</tbody>
+    </table>
+  </div>`;
+}
+
+function showWithdraw(available) {
+  if (available <= 0) { notify('No funds available to withdraw', 'error'); return; }
+  const hasBank = S.studio.bankName && S.studio.bankAcct;
+  showModal(`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-h">Withdraw Funds</div>
+      <div class="modal-sub">Available balance: <span style="color:var(--gold)">${cur(available)}</span></div>
+      ${!hasBank ? '<div class="warn-box">No bank account linked. Add your bank info in Settings first.</div>' : ''}
+      <div class="fgroup">
+        <label>Amount to Withdraw ($)</label>
+        <input type="number" id="wd-amount" value="${available.toFixed(2)}" max="${available}" min="0.01" step="0.01">
+      </div>
+      <div class="fgroup"><label>Destination Bank</label><input type="text" id="wd-bank" value="${esc(S.studio.bankName || '')}" placeholder="Bank name"></div>
+      <div class="fgroup"><label>Account (last 4 digits shown)</label><input type="text" id="wd-last4" value="${S.studio.bankAcct ? S.studio.bankAcct.slice(-4) : ''}" placeholder="e.g. 4242" maxlength="4"></div>
+      <div class="warn-box" style="margin-top:4px">
+        ${S.studio.payMode === 'live' ? '<strong>Live mode:</strong> This will initiate a real Stripe payout to your bank account.' : '<strong>Demo mode:</strong> This will be recorded but no real transfer will occur.'}
+      </div>
+      <div style="display:flex;gap:10px;margin-top:6px">
+        <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="doWithdraw(${available})">Confirm Withdrawal</button>
+      </div>
+    </div>
+  </div>`);
+}
+
+function doWithdraw(available) {
+  const amount = parseFloat(document.getElementById('wd-amount')?.value);
+  const bank = document.getElementById('wd-bank')?.value.trim();
+  const last4 = document.getElementById('wd-last4')?.value.trim();
+  if (!amount || amount <= 0) { notify('Enter a valid amount', 'error'); return; }
+  if (amount > available) { notify('Amount exceeds available balance', 'error'); return; }
+  if (!bank) { notify('Enter bank name', 'error'); return; }
+  S.withdrawn += amount;
+  S.withdrawals.push({ id: uid(), date: new Date().toISOString(), amount, bank, last4: last4 || '????', status: 'processed' });
+  save(); closeModal(); notify(`${cur(amount)} withdrawal initiated!`, 'success'); go('admin', { tab: 'revenue' });
+}
+
+// ─── ADMIN: SETTINGS ──────────────────────────────────────
+function adminSettings() {
+  return `<div class="admin-hd">
+    <h2 class="admin-title">Settings</h2>
+    <p class="admin-sub">Configure your studio, payment method, and bank account</p>
+  </div>
+
+  <div style="max-width:600px">
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:18px">Studio Info</h3>
+    <div class="fgroup"><label>Studio Name</label><input type="text" id="st-name" value="${esc(S.studio.name)}"></div>
+    <div class="fgroup"><label>Tagline</label><input type="text" id="st-tag" value="${esc(S.studio.tagline)}"></div>
+    <button class="btn btn-primary" onclick="saveStudio()">Save Studio Info</button>
+
+    <div class="div"></div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:18px">Admin Password</h3>
+    <div class="frow">
+      <div class="fgroup"><label>New Password</label><input type="password" id="st-pw1" placeholder="New password"></div>
+      <div class="fgroup"><label>Confirm Password</label><input type="password" id="st-pw2" placeholder="Confirm"></div>
+    </div>
+    <button class="btn btn-ghost" onclick="changePass()">Change Password</button>
+
+    <div class="div"></div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:12px">Stripe Payments</h3>
+    <div class="info-box">
+      <strong>How to set up Stripe:</strong><br>
+      1. Create a free account at <a href="https://stripe.com" target="_blank" style="color:var(--gold)">stripe.com</a><br>
+      2. Go to Developers → API Keys and copy your <strong>Publishable key</strong> (starts with pk_)<br>
+      3. For real payment processing, you'll also need a small backend. Use <a href="https://netlify.com" target="_blank" style="color:var(--gold)">Netlify Functions</a> (free) to handle server-side Stripe charges.<br>
+      4. For direct bank payouts, enable <strong>Stripe Express</strong> or <strong>Standard</strong> Connect in your Stripe dashboard.
+    </div>
+    <div class="fgroup"><label>Stripe Publishable Key</label><input type="text" id="st-stripe" value="${esc(S.studio.stripeKey)}" placeholder="pk_live_..."></div>
+    <div class="fgroup"><label>Payment Mode</label>
+      <select id="st-paymode">
+        <option value="demo" ${S.studio.payMode==='demo'?'selected':''}>Demo (simulated payments)</option>
+        <option value="live" ${S.studio.payMode==='live'?'selected':''}>Live (real Stripe payments)</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="saveStripe()">Save Payment Settings</button>
+
+    <div class="div"></div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:12px">Bank Account</h3>
+    <div class="warn-box">
+      For actual bank transfers, Stripe handles this automatically when you add a bank account in your <a href="https://dashboard.stripe.com" target="_blank" style="color:var(--gold)">Stripe dashboard</a>. The info below is for display purposes in withdrawal records.
+    </div>
+    <div class="fgroup"><label>Bank Name</label><input type="text" id="st-bank" value="${esc(S.studio.bankName)}" placeholder="e.g. Chase, Wells Fargo"></div>
+    <div class="frow">
+      <div class="fgroup"><label>Routing Number</label><input type="text" id="st-routing" value="${esc(S.studio.bankRouting)}" placeholder="9-digit routing number"></div>
+      <div class="fgroup"><label>Account Number</label><input type="text" id="st-acct" value="${esc(S.studio.bankAcct)}" placeholder="Account number"></div>
+    </div>
+    <button class="btn btn-primary" onclick="saveBank()">Save Bank Info</button>
+
+    <div class="div"></div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:12px">Danger Zone</h3>
+    <button class="btn btn-danger" onclick="if(confirm('Reset all data? This cannot be undone.'))resetAll()">Reset All Data</button>
+  </div>`;
+}
+
+function saveStudio() {
+  S.studio.name = document.getElementById('st-name')?.value.trim() || S.studio.name;
+  S.studio.tagline = document.getElementById('st-tag')?.value.trim() || S.studio.tagline;
+  save(); updNav(); notify('Studio info saved!', 'success');
+}
+
+function changePass() {
+  const p1 = document.getElementById('st-pw1')?.value;
+  const p2 = document.getElementById('st-pw2')?.value;
+  if (!p1 || p1.length < 4) { notify('Password must be at least 4 characters', 'error'); return; }
+  if (p1 !== p2) { notify('Passwords do not match', 'error'); return; }
+  S.studio.adminPass = p1; save(); notify('Password changed!', 'success');
+  document.getElementById('st-pw1').value = '';
+  document.getElementById('st-pw2').value = '';
+}
+
+function saveStripe() {
+  S.studio.stripeKey = document.getElementById('st-stripe')?.value.trim() || '';
+  S.studio.payMode = document.getElementById('st-paymode')?.value || 'demo';
+  save(); notify('Payment settings saved!', 'success');
+}
+
+function saveBank() {
+  S.studio.bankName = document.getElementById('st-bank')?.value.trim() || '';
+  S.studio.bankRouting = document.getElementById('st-routing')?.value.trim() || '';
+  S.studio.bankAcct = document.getElementById('st-acct')?.value.trim() || '';
+  save(); notify('Bank info saved!', 'success');
+}
+
+function resetAll() { localStorage.removeItem(SK); location.reload(); }
+
+// ─── ESCAPE ───────────────────────────────────────────────
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── INIT ─────────────────────────────────────────────────
+render();
+</script>
+</body>
+</html>
